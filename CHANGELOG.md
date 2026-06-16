@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.0.1](https://github.com/filippofinke/swissreach/compare/v1.0.0...v1.0.1) (2026-06-16)
+
+### Bug Fixes
+
+* trigger pages deploy from release workflow ([c172cc5](https://github.com/filippofinke/swissreach/commit/c172cc59fada1bf03d0b91fbab45b83638b67442))
+
 ## 1.0.0 (2026-06-16)
 
 ### Features
