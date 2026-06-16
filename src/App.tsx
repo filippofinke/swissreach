@@ -48,8 +48,11 @@ export function App() {
   }, [router.kind, meta, replace, state]);
 
   // Try to centre on the user's location (if in Switzerland) when no origin
-  // was specified in the URL.
-  const wantLocate = router.kind === 'ready' && !new URLSearchParams(location.search).has('origin');
+  // was specified in the URL. Snapshot the initial URL once — `useAppState`
+  // mirrors state back to the query string on mount, which would otherwise
+  // flip this flag to false before the geolocation result arrives.
+  const initialUrlHadOrigin = useRef(new URLSearchParams(location.search).has('origin'));
+  const wantLocate = router.kind === 'ready' && !initialUrlHadOrigin.current;
   const geo = useGeolocation(wantLocate);
   const locatedRef = useRef(false);
   useEffect(() => {
