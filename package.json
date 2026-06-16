@@ -1,0 +1,75 @@
+{
+  "name": "swissreach",
+  "version": "0.0.0-semantically-released",
+  "private": true,
+  "description": "Open-source client-side public-transport isochrone maps for Switzerland, powered by RAPTOR (minotor), MapLibre and H3.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Filippo Finke",
+  "homepage": "https://github.com/filippofinke/swissreach#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/filippofinke/swissreach.git"
+  },
+  "bugs": {
+    "url": "https://github.com/filippofinke/swissreach/issues"
+  },
+  "engines": {
+    "node": ">=24.11.0"
+  },
+  "scripts": {
+    "data:sample": "tsx scripts/make-sample-gtfs.ts",
+    "data:build": "tsx scripts/build-data.ts",
+    "data:build:parallel": "tsx scripts/build-data-parallel.ts",
+    "data:fetch": "tsx scripts/fetch-swiss-gtfs.ts",
+    "data:real": "tsx scripts/build-real.ts",
+    "data:real:parallel": "tsx scripts/build-real-parallel.ts",
+    "logo": "tsx scripts/fetch-sbb-logo.ts",
+    "data": "npm run data:sample && npm run data:build",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "biome lint src/ scripts/",
+    "format": "biome format --write src/ scripts/",
+    "check": "biome check --write src/ scripts/",
+    "release": "semantic-release",
+    "release:dry": "semantic-release --dry-run --no-ci"
+  },
+  "dependencies": {
+    "@sbb-esta/lyne-elements": "^5.0.1",
+    "@sbb-esta/lyne-react": "^5.0.1",
+    "d3-scale-chromatic": "^3.1.0",
+    "h3-js": "^4.2.1",
+    "maplibre-gl": "^5.6.0",
+    "minotor": "^11.2.3",
+    "pako": "^2.1.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-map-gl": "^8.1.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.0",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.1",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "semantic-release": "^24.2.0",
+    "@types/d3-scale-chromatic": "^3.0.3",
+    "@types/geojson": "^7946.0.14",
+    "@types/jszip": "^3.4.0",
+    "@types/node": "^24.0.0",
+    "@types/pako": "^2.0.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "jszip": "^3.10.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.0"
+  }
+}

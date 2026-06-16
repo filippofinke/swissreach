@@ -1,0 +1,601 @@
+/* Isochrone — styled after the SBB Mobile app. Lyne ships its own
+   design tokens; this stylesheet keeps only the layout pieces and the
+   bespoke map overlays (legend, origin marker, journey panel). */
+:root {
+  --sbb-red: var(--sbb-color-red);
+  --sbb-red125: var(--sbb-color-red125);
+
+  --black: var(--sbb-color-black);
+  --charcoal: var(--sbb-color-charcoal);
+  --iron: var(--sbb-color-iron);
+  --granite: var(--sbb-color-granite);
+  --metal: var(--sbb-color-metal);
+  --smoke: var(--sbb-color-smoke);
+  --cement: var(--sbb-color-cement);
+  --silver: var(--sbb-color-silver);
+  --cloud: var(--sbb-color-cloud);
+  --milk: var(--sbb-color-milk);
+  --white: var(--sbb-color-white);
+
+  --sbb-sky: var(--sbb-color-sky);
+  --sbb-turquoise: var(--sbb-color-turquoise);
+  --postbus-yellow: #ffcc00;
+
+  --panel-w: 320px;
+  --radius-card: var(--sbb-border-radius-8x);
+  --radius-field: var(--sbb-border-radius-4x);
+
+  font-family: "SBB", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  color: var(--charcoal);
+  background: var(--milk);
+  overflow: hidden;
+  /* Force Lyne tokens to resolve to their light variant regardless of the
+     user's system colour-scheme preference. */
+  color-scheme: light;
+}
+
+#root {
+  display: flex;
+}
+
+#app {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ---- Sidebar ----------------------------------------------------------- */
+#panel {
+  flex: none;
+  width: var(--panel-w);
+  background: var(--white);
+  border-right: 1px solid var(--cloud);
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.26s ease;
+  z-index: 15;
+  position: relative;
+}
+#app.sidebar-collapsed #panel {
+  margin-left: calc(var(--panel-w) * -1);
+}
+
+.sidebar-toggle-btn {
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 12px;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--cloud);
+  background: var(--white);
+  color: var(--charcoal);
+  cursor: pointer;
+  border-radius: var(--sbb-border-radius-infinity);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition:
+    background-color 0.15s,
+    color 0.15s,
+    border-color 0.15s;
+}
+.sidebar-toggle-btn:hover {
+  background: var(--milk);
+  color: var(--sbb-red);
+  border-color: var(--silver);
+}
+.sidebar-toggle-btn sbb-icon,
+.sidebar-toggle-btn svg {
+  transition: transform 0.26s ease;
+}
+#app.sidebar-collapsed .sidebar-toggle-btn sbb-icon,
+#app.sidebar-collapsed .sidebar-toggle-btn svg {
+  transform: rotate(180deg);
+}
+
+.panel-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panel-bottom {
+  flex: none;
+  border-top: 1px solid var(--cloud);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 8px 7px 14px;
+}
+.panel-bottom .status {
+  flex: 1;
+  min-height: 0;
+  padding: 0;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+#map {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---- Field labels (used outside Lyne form-fields) ---------------------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.field > .field-label {
+  font-size: 0.75rem;
+  color: var(--granite);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.field > .field-label b {
+  color: var(--charcoal);
+  font-weight: 700;
+}
+
+/* ---- "Within N min" chip row ------------------------------------------- */
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.chip-btn {
+  flex: 1 1 auto;
+  min-width: 34px;
+  background: var(--white);
+  border: 1px solid var(--silver);
+  color: var(--charcoal);
+  border-radius: var(--sbb-border-radius-infinity);
+  padding: 6px 4px;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.chip-btn:hover {
+  border-color: var(--sbb-red);
+}
+.chip-btn.active {
+  background: var(--sbb-red);
+  border-color: var(--sbb-red);
+  color: var(--white);
+}
+.chip-input {
+  width: 56px;
+  flex: 0 0 auto;
+  border: 1px dashed var(--cement);
+  border-radius: var(--sbb-border-radius-infinity);
+  padding: 6px 8px;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--charcoal);
+  background: var(--white);
+  outline: none;
+}
+.chip-input:focus {
+  border-style: solid;
+  border-color: var(--sbb-red);
+}
+.chip-input::placeholder {
+  color: var(--metal);
+  font-weight: 400;
+}
+
+/* ---- Segmented button group (max changes) ----------------------------- */
+.seg-group {
+  position: relative;
+  display: flex;
+  background: var(--cloud);
+  border-radius: var(--sbb-border-radius-infinity);
+  padding: 3px;
+  gap: 2px;
+  border: none;
+  margin: 0;
+}
+.seg-indicator {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc((100% - 6px - (var(--seg-count, 1) - 1) * 2px) / var(--seg-count, 1));
+  background: var(--white);
+  border-radius: var(--sbb-border-radius-infinity);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
+  transform: translateX(calc(var(--seg-active, 0) * (100% + 2px)));
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.seg-btn {
+  flex: 1;
+  position: relative;
+  background: transparent;
+  border: none;
+  color: var(--granite);
+  border-radius: var(--sbb-border-radius-infinity);
+  padding: 6px 4px;
+  font: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+.seg-btn:hover:not(.active) {
+  color: var(--charcoal);
+}
+.seg-btn.active {
+  color: var(--charcoal);
+  font-weight: 700;
+}
+
+/* ---- Lyne form-field full-width override ------------------------------ */
+sbb-form-field {
+  display: block;
+  width: 100%;
+}
+
+/* ---- Transport modes group --------------------------------------------- */
+sbb-checkbox-group.modes-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 10px;
+}
+
+/* ---- Expansion-panel body wrappers (compose Lyne accordion items) ----- */
+.acc-state {
+  font-weight: 400;
+  font-size: 0.8125rem;
+  color: var(--sbb-red);
+  margin-left: auto;
+}
+.acc-body {
+  padding: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.modes-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* ---- Status text ------------------------------------------------------- */
+.status {
+  font-size: 0.8125rem;
+  color: var(--metal);
+  min-height: 18px;
+  padding: 0 2px;
+}
+.status.busy::after {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-left: 6px;
+  border: 2px solid var(--cement);
+  border-top-color: var(--sbb-red);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---- Legend overlay ---------------------------------------------------- */
+.legend-overlay {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 7;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+  border-radius: var(--sbb-border-radius-4x);
+  padding: 8px 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  max-width: calc(100% - 24px);
+}
+.legend-scale {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: var(--charcoal);
+}
+.swatch {
+  width: 14px;
+  height: 12px;
+  border-radius: var(--sbb-border-radius-1x);
+  display: inline-block;
+}
+
+/* ---- SBB logo (used wherever SBB is cited) ---------------------------- */
+.sbb-logo {
+  height: 15px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+.sbb-logo--white {
+  filter: brightness(0) invert(1);
+}
+
+/* ---- Origin marker on the map ----------------------------------------- */
+.origin-marker {
+  width: 20px;
+  height: 20px;
+  background: var(--sbb-red);
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* ---- MapLibre popups (light) ------------------------------------------ */
+.maplibregl-popup-content {
+  background: var(--white);
+  color: var(--charcoal);
+  border-radius: var(--sbb-border-radius-4x);
+  font-size: 0.8125rem;
+  padding: 8px 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+.maplibregl-popup-tip {
+  border-top-color: var(--white);
+  border-bottom-color: var(--white);
+}
+
+/* ---- Journey panel ---------------------------------------------------- */
+.journey-panel {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 8;
+  width: min(360px, calc(100% - 24px));
+  max-height: calc(100% - 24px);
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: var(--radius-card);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+  padding: 16px;
+  min-height: 0;
+}
+.journey-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.journey-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.journey-sub {
+  font-size: 0.8125rem;
+  color: var(--granite);
+  margin-top: 2px;
+}
+.journey-close {
+  background: var(--milk);
+  border: none;
+  color: var(--granite);
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 1;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--sbb-border-radius-infinity);
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.journey-close:hover {
+  background: var(--cloud);
+  color: var(--charcoal);
+}
+.journey-legs {
+  list-style: none;
+  margin: 0;
+  padding: 0 4px 0 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.journey-legs::-webkit-scrollbar {
+  width: 6px;
+}
+.journey-legs::-webkit-scrollbar-thumb {
+  background: var(--silver);
+  border-radius: var(--sbb-border-radius-2x);
+}
+.journey-head,
+.journey-actions {
+  flex: none;
+}
+.leg {
+  display: flex;
+  gap: 12px;
+}
+.leg-time {
+  width: 42px;
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  padding-top: 1px;
+}
+.leg-body {
+  flex: 1;
+  border-left: 2px solid var(--cloud);
+  padding: 0 0 14px 14px;
+  position: relative;
+}
+.leg.vehicle > .leg-body::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--sbb-red);
+}
+.leg-from {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+.leg-line {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 5px 0;
+  font-size: 0.8125rem;
+  color: var(--granite);
+}
+.leg-to {
+  font-size: 0.8125rem;
+  color: var(--granite);
+}
+.leg.walk > .leg-body {
+  border-left-style: dashed;
+  padding-bottom: 12px;
+}
+.leg-walk {
+  font-size: 0.8125rem;
+  color: var(--metal);
+}
+
+/* SBB product badges */
+.sbb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border-radius: var(--sbb-border-radius-1x);
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--white);
+  background: var(--sbb-red);
+  white-space: nowrap;
+}
+.sbb-badge--s,
+.sbb-badge--r,
+.sbb-badge--tram {
+  background: var(--charcoal);
+}
+.sbb-badge--bus {
+  background: var(--postbus-yellow);
+  color: var(--black);
+}
+.sbb-badge--trolley {
+  background: #f27e00;
+  color: var(--black);
+}
+.sbb-badge--ferry {
+  background: var(--sbb-sky);
+}
+.sbb-badge--mtn {
+  background: var(--sbb-turquoise);
+}
+
+.journey-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+.journey-actions > * {
+  flex: 1;
+}
+
+/* ---- About dialog content --------------------------------------------- */
+.disclaimer {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--milk);
+  border-radius: var(--sbb-border-radius-4x);
+  padding: 12px;
+  font-size: 0.8125rem;
+  color: var(--granite);
+  margin-top: 8px;
+}
+.disclaimer .sbb-logo {
+  height: 20px;
+  flex: none;
+  margin-top: 2px;
+}
+
+/* ---- Responsive: sidebar overlays the map on small screens ------------ */
+@media (max-width: 760px) {
+  #panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(88vw, var(--panel-w));
+    border-right: 1px solid var(--cloud);
+    box-shadow: 2px 0 24px rgba(0, 0, 0, 0.22);
+    margin-left: 0;
+    transform: translateX(0);
+    transition: transform 0.26s ease;
+  }
+  #app.sidebar-collapsed #panel {
+    transform: translateX(-100%);
+  }
+  .journey-panel {
+    width: calc(100% - 24px);
+    max-height: 50%;
+  }
+}

@@ -1,0 +1,65 @@
+name: Deploy to GitHub Pages
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Check out the released tag so the build embeds the released version.
+          ref: ${{ github.event.release.tag_name || github.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Build the timetable for today's service day from the real Swiss GTFS
+      # feed (holiday-aware). Falls back to the bundled sample if the feed is
+      # unavailable, so a deploy never breaks.
+      - name: Build transit data
+        env:
+          GTFS_URL: ${{ secrets.GTFS_URL }}
+          DAYS: ${{ vars.PLANNING_DAYS || '14' }}
+        run: |
+          DATE="$(TZ=Europe/Zurich date +%F)"
+          echo "Service day: $DATE"
+          if npm run data:real -- "$DATE"; then
+            echo "Built from the real Swiss GTFS feed."
+          else
+            echo "::warning::Real feed unavailable — falling back to sample data."
+            npm run data
+          fi
+      # Fetch the SBB logo (non-fatal if unavailable).
+      - run: npm run logo
+      # Build under the repository sub-path (https://<user>.github.io/<repo>/).
+      - name: Build
+        run: npm run build
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

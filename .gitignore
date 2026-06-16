@@ -1,0 +1,23 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# Temp GTFS working directory
+/tmp-gtfs/
+swiss-gtfs.zip
+
+# Fetched at build time (trademark asset)
+public/sbb-logo.svg
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
