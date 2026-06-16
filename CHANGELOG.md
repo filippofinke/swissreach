@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.0.5](https://github.com/filippofinke/swissreach/compare/v1.0.4...v1.0.5) (2026-06-16)
+
+### Bug Fixes
+
+* geolocate on first load even after URL state mirror runs ([a5f8375](https://github.com/filippofinke/swissreach/commit/a5f8375446bfcece32731689826a136a520f0c57))
+
 ## [1.0.4](https://github.com/filippofinke/swissreach/compare/v1.0.3...v1.0.4) (2026-06-16)
 
 ### Bug Fixes
