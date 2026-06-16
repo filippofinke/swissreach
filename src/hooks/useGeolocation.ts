@@ -19,8 +19,11 @@ export function useGeolocation(enabled: boolean): {
   const [resolved, setResolved] = useState(false);
 
   useEffect(() => {
+    // While disabled we leave `resolved` false: it must only become true once
+    // a real geolocation attempt has completed, otherwise a consumer that
+    // gates on `resolved` would latch on the stale "disabled" value before the
+    // actual position arrives.
     if (!enabled) {
-      setResolved(true);
       return;
     }
     if (!('geolocation' in navigator)) {
