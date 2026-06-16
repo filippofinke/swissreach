@@ -43,16 +43,19 @@ jobs:
         run: |
           npm run lint
           npm run build
+      # Use the wrapper action so `new_release_published` / `new_release_git_tag`
+      # are exposed as step outputs — the plain `npx semantic-release` CLI does
+      # not write to $GITHUB_OUTPUT, which left the downstream deploy job
+      # skipped.
       - name: Semantic Release
         id: semrel
+        uses: cycjimmy/semantic-release-action@v4
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: github-actions[bot]
           GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
           GIT_COMMITTER_NAME: github-actions[bot]
           GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-        run: |
-          npx semantic-release
 
   deploy:
     # Inline the Pages deploy here instead of listening for `release: published`
