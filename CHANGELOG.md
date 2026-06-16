@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.0.2](https://github.com/filippofinke/swissreach/compare/v1.0.1...v1.0.2) (2026-06-16)
+
+### Bug Fixes
+
+* expose semantic-release outputs via wrapper action ([19a61cc](https://github.com/filippofinke/swissreach/commit/19a61cc7e019b464eb47e369b758205f01d43161))
+
 ## [1.0.1](https://github.com/filippofinke/swissreach/compare/v1.0.0...v1.0.1) (2026-06-16)
 
 ### Bug Fixes
