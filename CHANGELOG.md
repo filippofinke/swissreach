@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.0.3](https://github.com/filippofinke/swissreach/compare/v1.0.2...v1.0.3) (2026-06-16)
+
+### Bug Fixes
+
+* opt release workflow into Node 24 runtime ([f082224](https://github.com/filippofinke/swissreach/commit/f082224a94ae999fd36d114410ba4a2e96942e3d))
+
 ## [1.0.2](https://github.com/filippofinke/swissreach/compare/v1.0.1...v1.0.2) (2026-06-16)
 
 ### Bug Fixes
