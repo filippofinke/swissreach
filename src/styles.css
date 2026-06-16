@@ -353,17 +353,6 @@ sbb-checkbox-group.modes-group {
   display: inline-block;
 }
 
-/* ---- SBB logo (used wherever SBB is cited) ---------------------------- */
-.sbb-logo {
-  height: 15px;
-  width: auto;
-  display: inline-block;
-  vertical-align: middle;
-}
-.sbb-logo--white {
-  filter: brightness(0) invert(1);
-}
-
 /* ---- Origin marker on the map ----------------------------------------- */
 .origin-marker {
   width: 20px;
@@ -571,12 +560,6 @@ sbb-checkbox-group.modes-group {
   color: var(--granite);
   margin-top: 8px;
 }
-.disclaimer .sbb-logo {
-  height: 20px;
-  flex: none;
-  margin-top: 2px;
-}
-
 /* ---- Responsive: sidebar overlays the map on small screens ------------ */
 @media (max-width: 760px) {
   #panel {

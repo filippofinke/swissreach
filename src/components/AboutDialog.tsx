@@ -5,9 +5,6 @@ import { SbbDialog, SbbDialogContent, SbbDialogTitle } from '@sbb-esta/lyne-reac
 import { useEffect, useRef } from 'react';
 import { useTranslation } from '../i18n/I18nProvider';
 
-const BASE = import.meta.env.BASE_URL;
-const SBB_LOGO_SRC = `${BASE}sbb-logo.svg`;
-
 export type AboutDialogProps = {
   open: boolean;
   onClose: () => void;
@@ -47,14 +44,6 @@ export function AboutDialog({ open, onClose }: AboutDialogProps) {
         <p>{t.designDescription}</p>
 
         <div className="disclaimer">
-          <img
-            className="sbb-logo about-logo"
-            alt="SBB"
-            src={SBB_LOGO_SRC}
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).style.display = 'none';
-            }}
-          />
           <span>{t.disclaimer}</span>
         </div>
       </SbbDialogContent>

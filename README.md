@@ -76,7 +76,6 @@ The app needs `public/data/stops.bin`, one or more content-hashed `timetable_<ha
 
 ```bash
 npm run data      # build the sample network (offline, ~347 stations)
-npm run logo      # optional: download the SBB logo to public/
 ```
 
 ### 4. Run the dev server
@@ -147,7 +146,6 @@ scripts/
   build-real.ts             # one-shot: download real feed + build it
   build-real-parallel.ts    # ...same, with a worker pool over service days
   fetch-swiss-gtfs.ts       # download the real Swiss GTFS feed
-  fetch-sbb-logo.ts         # download the SBB logo
 src/
   App.tsx                   # top-level composition, cross-cutting state
   main.tsx                  # React entry point

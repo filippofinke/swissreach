@@ -7,9 +7,6 @@ dist/
 /tmp-gtfs/
 swiss-gtfs.zip
 
-# Fetched at build time (trademark asset)
-public/sbb-logo.svg
-
 # Environment files
 .env
 .env.local

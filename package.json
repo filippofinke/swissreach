@@ -1,6 +1,6 @@
 {
   "name": "swissreach",
-  "version": "1.0.0",
+  "version": "0.0.0-semantically-released",
   "private": true,
   "description": "Open-source client-side public-transport isochrone maps for Switzerland, powered by RAPTOR (minotor), MapLibre and H3.",
   "type": "module",
@@ -24,7 +24,6 @@
     "data:fetch": "tsx scripts/fetch-swiss-gtfs.ts",
     "data:real": "tsx scripts/build-real.ts",
     "data:real:parallel": "tsx scripts/build-real-parallel.ts",
-    "logo": "tsx scripts/fetch-sbb-logo.ts",
     "data": "npm run data:sample && npm run data:build",
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
