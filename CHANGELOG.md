@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.0.4](https://github.com/filippofinke/swissreach/compare/v1.0.3...v1.0.4) (2026-06-16)
+
+### Bug Fixes
+
+* ship pre-generated public/data instead of rebuilding it on deploy ([6ca4c7e](https://github.com/filippofinke/swissreach/commit/6ca4c7ed3f96f5e7fe772657fc20d81faf3990d3))
+
 ## [1.0.3](https://github.com/filippofinke/swissreach/compare/v1.0.2...v1.0.3) (2026-06-16)
 
 ### Bug Fixes
