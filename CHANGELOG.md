@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.0.6](https://github.com/filippofinke/swissreach/compare/v1.0.5...v1.0.6) (2026-06-16)
+
+### Bug Fixes
+
+* stop discarding the geolocation result on initial load ([b510549](https://github.com/filippofinke/swissreach/commit/b51054905e8fa01da31571ffcbf1319376f22dd4))
+
 ## [1.0.5](https://github.com/filippofinke/swissreach/compare/v1.0.4...v1.0.5) (2026-06-16)
 
 ### Bug Fixes
