@@ -43,8 +43,6 @@ jobs:
             echo "::warning::Real feed unavailable — falling back to sample data."
             npm run data
           fi
-      # Fetch the SBB logo (non-fatal if unavailable).
-      - run: npm run logo
       # Build under the repository sub-path (https://<user>.github.io/<repo>/).
       - name: Build
         run: npm run build

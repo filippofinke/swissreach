@@ -24,7 +24,6 @@
     "data:fetch": "tsx scripts/fetch-swiss-gtfs.ts",
     "data:real": "tsx scripts/build-real.ts",
     "data:real:parallel": "tsx scripts/build-real-parallel.ts",
-    "logo": "tsx scripts/fetch-sbb-logo.ts",
     "data": "npm run data:sample && npm run data:build",
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
