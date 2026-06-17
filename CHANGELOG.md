@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.1.0](https://github.com/filippofinke/swissreach/compare/v1.0.6...v1.1.0) (2026-06-17)
+
+### Features
+
+* add favicon, app icons and SEO metadata ([8e012dd](https://github.com/filippofinke/swissreach/commit/8e012ddabaabc6b80eea12677902ded3c988f607))
+* add guided first-launch tour ([9a09949](https://github.com/filippofinke/swissreach/commit/9a099494ab2e2baf7c7058bd21a9676472e98e17))
+
 ## [1.0.6](https://github.com/filippofinke/swissreach/compare/v1.0.5...v1.0.6) (2026-06-16)
 
 ### Bug Fixes
