@@ -109,4 +109,62 @@ export const de: Dictionary = {
   min: 'Min.',
 
   language: 'Sprache',
+
+  tour: {
+    next: 'Weiter',
+    back: 'Zurück',
+    done: 'Fertig',
+    progress: '{{current}} von {{total}}',
+    replay: 'Tour erneut starten',
+    steps: {
+      welcome: {
+        title: 'Willkommen bei SwissReach',
+        body: 'Sieh, wie weit du mit dem öffentlichen Verkehr von jeder Schweizer Station aus kommst. Alles läuft in deinem Browser. Es gibt kein Backend. Diese kurze Tour zeigt dir jede Funktion. Nutze Weiter und Zurück oder schliesse sie jederzeit.',
+      },
+      origin: {
+        title: 'Startpunkt wählen',
+        body: 'Suche hier eine beliebige Station. Die Karte zeigt dann alles, was du von dort aus erreichst.',
+      },
+      date: {
+        title: 'Tag auswählen',
+        body: 'Wähle den Fahrplantag. Es lassen sich nur Tage mit verfügbaren Fahrplandaten auswählen.',
+      },
+      time: {
+        title: 'Abfahrtszeit festlegen',
+        body: 'Die Reisezeiten werden für Fahrten berechnet, die ungefähr zu dieser Zeit losfahren.',
+      },
+      duration: {
+        title: 'Zeitbudget',
+        body: 'Zeige nur Orte, die innerhalb dieser Minutenzahl erreichbar sind. Tippe einen Vorschlag an oder gib einen eigenen Wert ein.',
+      },
+      transfers: {
+        title: 'Umstiege begrenzen',
+        body: 'Erlaube nur Direktverbindungen oder bis zu 1, 2 oder 3 Umstiege, oder beliebig viele mit «Beliebig».',
+      },
+      metric: {
+        title: 'Karte einfärben',
+        body: 'Färbe die Karte nach Reisezeit oder nach der Anzahl der nötigen Umstiege.',
+      },
+      resolution: {
+        title: 'Kartendetail',
+        body: 'Stelle ein, wie fein das Sechseckraster ist. Höher bedeutet mehr Detail; tiefer ist schneller und glatter.',
+      },
+      modes: {
+        title: 'Verkehrsmittel',
+        body: 'Schliesse Züge, Busse, Trams, Schiffe und mehr ein oder aus und sieh, wie sich der erreichbare Bereich ändert.',
+      },
+      map: {
+        title: 'Dein erreichbarer Bereich',
+        body: 'Farbige Sechsecke zeigen, wohin du kommst, und die Legende erklärt die Farben. Klicke auf eine Station auf der Karte für eine Verbindung Schritt für Schritt, und um sie als neuen Startpunkt zu setzen.',
+      },
+      actions: {
+        title: 'Teilen, Info & Sprache',
+        body: 'Kopiere einen Link zu deiner aktuellen Ansicht, öffne das Infofenster oder wechsle hier die Sprache.',
+      },
+      replayStep: {
+        title: 'Tour nochmals ansehen?',
+        body: 'Öffne diese geführte Tour jederzeit über diese Schaltfläche wieder. Viel Spass beim Entdecken der Schweiz!',
+      },
+    },
+  },
 };

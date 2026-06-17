@@ -109,4 +109,62 @@ export const rm: Dictionary = {
   min: 'min',
 
   language: 'Lingua',
+
+  tour: {
+    next: 'Vinavant',
+    back: 'Enavos',
+    done: 'Finì',
+    progress: '{{current}} da {{total}}',
+    replay: 'Repeter il tur',
+    steps: {
+      welcome: {
+        title: 'Bainvegni tar SwissReach',
+        body: 'Guarda quant lunsch che ti pos viagiar cun il traffic public dad mintga staziun svizra. Tut funcziuna en tes browser. I n’exista nagin backend. Quest curt tur mussa mintga funcziun. Dovra Vinavant ed Enavos, u serra el da tut temp.',
+      },
+      origin: {
+        title: 'Tscherna tes punct da partenza',
+        body: 'Tschertga qua ina staziun da gugent. La charta sa renovescha per mussar tut quai che ti pos cuntanscher dad là.',
+      },
+      date: {
+        title: 'Tscherna il di',
+        body: 'Tscherna il di da servetsch da planisar. I pon mo vegnir tschernids dis cun datas d’urari disponiblas.',
+      },
+      time: {
+        title: 'Definescha l’ura da partenza',
+        body: 'Ils temps da viadi vegnan calculads per viadis che partan enturn questa ura.',
+      },
+      duration: {
+        title: 'Budget da temp',
+        body: 'Mussa mo lieus cuntanschibels entaifer quest dumber da minutas. Smatga in valur predefinì u tippa tes agen valur.',
+      },
+      transfers: {
+        title: 'Limitescha las midadas',
+        body: 'Permetta mo viadis directs, u fin a 1, 2 u 3 midadas, u in dumber da gugent cun «Da gugent».',
+      },
+      metric: {
+        title: 'Colurescha la charta',
+        body: 'Colurescha la charta tenor il temp da viadi u tenor il dumber da midadas necessarias per arrivar là.',
+      },
+      resolution: {
+        title: 'Detagl da la charta',
+        body: 'Adatta quant fin che la rastra dad hexagons è. Pli aut vul dir dapli detagls; pli bass è pli svelt e pli en mument.',
+      },
+      modes: {
+        title: 'Meds da transport',
+        body: 'Includa u excluda trens, bus, trams, bartgas e dapli per vesair co che la zona cuntanschibla sa mida.',
+      },
+      map: {
+        title: 'Tia zona cuntanschibla',
+        body: 'Ils hexagons colurads mussan nua che ti pos arrivar, e la legenda declera las colurs. Clicca sin ina staziun sin la charta per ina colliaziun pass per pass, e per la definir sco nov punct da partenza.',
+      },
+      actions: {
+        title: 'Cundivider, infurmaziuns e lingua',
+        body: 'Copegia in link a tia vista actuala, avra la chaschetta d’infurmaziun u mida qua la lingua.',
+      },
+      replayStep: {
+        title: 'Ti vuls puspè il tur?',
+        body: 'Avra puspè quest tur guidà da tut temp cun quest buttun. Bun divertiment cun explorar la Svizra!',
+      },
+    },
+  },
 };

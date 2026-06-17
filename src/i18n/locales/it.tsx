@@ -109,4 +109,62 @@ export const it: Dictionary = {
   min: 'min',
 
   language: 'Lingua',
+
+  tour: {
+    next: 'Avanti',
+    back: 'Indietro',
+    done: 'Fine',
+    progress: '{{current}} di {{total}}',
+    replay: 'Rivedi il tour',
+    steps: {
+      welcome: {
+        title: 'Benvenuto su SwissReach',
+        body: 'Scopri fino a dove puoi viaggiare con i trasporti pubblici da qualsiasi stazione svizzera. Tutto funziona nel tuo browser. Non c’è alcun backend. Questo breve tour mostra ogni funzione. Usa Avanti e Indietro, oppure chiudilo quando vuoi.',
+      },
+      origin: {
+        title: 'Scegli il punto di partenza',
+        body: 'Cerca qui una qualsiasi stazione. La mappa si ridisegna per mostrare tutto ciò che puoi raggiungere da lì.',
+      },
+      date: {
+        title: 'Scegli il giorno',
+        body: 'Seleziona il giorno di servizio da pianificare. Si possono scegliere solo i giorni con orari disponibili.',
+      },
+      time: {
+        title: 'Imposta l’ora di partenza',
+        body: 'I tempi di viaggio sono calcolati per gli spostamenti che partono intorno a quest’ora.',
+      },
+      duration: {
+        title: 'Budget di tempo',
+        body: 'Mostra solo i luoghi raggiungibili entro questo numero di minuti. Tocca un valore predefinito o digita il tuo.',
+      },
+      transfers: {
+        title: 'Limita i cambi',
+        body: 'Consenti solo viaggi diretti, oppure fino a 1, 2 o 3 cambi, o un numero qualsiasi con «Tutti».',
+      },
+      metric: {
+        title: 'Colora la mappa',
+        body: 'Colora la mappa in base al tempo di viaggio o al numero di cambi necessari per arrivarci.',
+      },
+      resolution: {
+        title: 'Dettaglio della mappa',
+        body: 'Regola la finezza della griglia esagonale. Più alto significa più dettaglio; più basso è più rapido e uniforme.',
+      },
+      modes: {
+        title: 'Mezzi di trasporto',
+        body: 'Includi o escludi treni, bus, tram, battelli e altro per vedere come cambia l’area raggiungibile.',
+      },
+      map: {
+        title: 'La tua area raggiungibile',
+        body: 'Gli esagoni colorati mostrano dove puoi arrivare e la legenda spiega i colori. Clicca su una stazione sulla mappa per una connessione passo dopo passo, e per impostarla come nuovo punto di partenza.',
+      },
+      actions: {
+        title: 'Condividi, info e lingua',
+        body: 'Copia un link alla vista attuale, apri la finestra delle informazioni o cambia lingua qui.',
+      },
+      replayStep: {
+        title: 'Vuoi rivedere il tour?',
+        body: 'Riapri questo tour guidato in qualsiasi momento da questo pulsante. Buona esplorazione della Svizzera!',
+      },
+    },
+  },
 };

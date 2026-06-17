@@ -79,7 +79,7 @@ export function OriginSearch({ client, currentName, onPick }: OriginSearchProps)
   }
 
   return (
-    <div className="field">
+    <div className="field" data-tour="origin">
       <span className="field-label">{t.from}</span>
       <SbbFormField size="m">
         <input

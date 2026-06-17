@@ -23,7 +23,7 @@ export function ModesPanel({ available, selected, onChange }: ModesPanelProps) {
   }
 
   return (
-    <div className="field">
+    <div className="field" data-tour="modes">
       <span className="field-label">{t.transportModes}</span>
       <SbbCheckboxGroup orientation="vertical" size="s" className="modes-group">
         {available.map((mode) => (

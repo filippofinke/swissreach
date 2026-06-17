@@ -19,7 +19,7 @@ function clamp(n: number): number {
 export function MaxDurationField({ value, onChange }: MaxDurationFieldProps) {
   const { t } = useTranslation();
   return (
-    <div className="field">
+    <div className="field" data-tour="duration">
       <span className="field-label">
         {t.within} <b>{value} {t.min}</b>
       </span>

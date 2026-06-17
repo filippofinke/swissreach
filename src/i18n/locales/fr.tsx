@@ -109,4 +109,62 @@ export const fr: Dictionary = {
   min: 'min',
 
   language: 'Langue',
+
+  tour: {
+    next: 'Suivant',
+    back: 'Retour',
+    done: 'Terminé',
+    progress: '{{current}} sur {{total}}',
+    replay: 'Revoir la visite',
+    steps: {
+      welcome: {
+        title: 'Bienvenue sur SwissReach',
+        body: 'Découvrez jusqu’où vous pouvez voyager en transports publics depuis n’importe quelle gare suisse. Tout fonctionne dans votre navigateur. Il n’y a pas de serveur. Cette courte visite présente chaque réglage. Utilisez Suivant et Retour, ou fermez la visite à tout moment.',
+      },
+      origin: {
+        title: 'Choisissez votre point de départ',
+        body: 'Recherchez ici n’importe quelle gare. La carte se redessine pour montrer tout ce que vous pouvez atteindre depuis ce point.',
+      },
+      date: {
+        title: 'Choisissez le jour',
+        body: 'Sélectionnez le jour d’exploitation à planifier. Seuls les jours dont l’horaire est disponible peuvent être choisis.',
+      },
+      time: {
+        title: 'Définissez l’heure de départ',
+        body: 'Les temps de trajet sont calculés pour les voyages partant aux alentours de cette heure.',
+      },
+      duration: {
+        title: 'Budget de temps',
+        body: 'N’afficher que les lieux accessibles en ce nombre de minutes. Touchez une valeur prédéfinie ou saisissez la vôtre.',
+      },
+      transfers: {
+        title: 'Limitez les correspondances',
+        body: 'N’autorisez que les trajets directs, ou jusqu’à 1, 2 ou 3 correspondances, ou un nombre quelconque avec « Toutes ».',
+      },
+      metric: {
+        title: 'Colorez la carte',
+        body: 'Teintez la carte selon le temps de trajet ou selon le nombre de correspondances nécessaires.',
+      },
+      resolution: {
+        title: 'Détail de la carte',
+        body: 'Réglez la finesse de la grille hexagonale. Plus élevé donne plus de détail ; plus bas est plus rapide et plus lisse.',
+      },
+      modes: {
+        title: 'Modes de transport',
+        body: 'Incluez ou excluez trains, bus, trams, bateaux et plus encore pour voir comment la zone accessible évolue.',
+      },
+      map: {
+        title: 'Votre zone accessible',
+        body: 'Les hexagones colorés montrent où vous pouvez aller, et la légende explique les couleurs. Cliquez sur une gare de la carte pour une connexion étape par étape, et pour en faire le nouveau point de départ.',
+      },
+      actions: {
+        title: 'Partage, infos et langue',
+        body: 'Copiez un lien vers votre vue actuelle, ouvrez la fenêtre d’informations ou changez de langue ici.',
+      },
+      replayStep: {
+        title: 'Besoin de revoir la visite ?',
+        body: 'Rouvrez cette visite guidée à tout moment depuis ce bouton. Bonne exploration de la Suisse !',
+      },
+    },
+  },
 };

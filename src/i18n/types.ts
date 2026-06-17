@@ -1,5 +1,33 @@
 import type { RouteType } from '../state/types';
 
+/** Title + body for a single guided-tour step. */
+export type TourStepText = { title: string; body: string };
+
+/** Strings for the first-launch guided tour (driver.js). */
+export type TourDictionary = {
+  next: string;
+  back: string;
+  done: string;
+  /** Progress template; supports driver.js's {{current}}/{{total}} tokens. */
+  progress: string;
+  /** Label for the replay (?) button in the status bar. */
+  replay: string;
+  steps: {
+    welcome: TourStepText;
+    origin: TourStepText;
+    date: TourStepText;
+    time: TourStepText;
+    duration: TourStepText;
+    transfers: TourStepText;
+    metric: TourStepText;
+    resolution: TourStepText;
+    modes: TourStepText;
+    map: TourStepText;
+    actions: TourStepText;
+    replayStep: TourStepText;
+  };
+};
+
 export type Dictionary = {
   // About Dialog
   about: string;
@@ -65,6 +93,9 @@ export type Dictionary = {
 
   // General
   language: string;
+
+  // Guided tour
+  tour: TourDictionary;
 };
 
 export type Language = 'en' | 'it' | 'de' | 'fr' | 'rm';

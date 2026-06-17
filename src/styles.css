@@ -582,3 +582,86 @@ sbb-checkbox-group.modes-group {
     max-height: 50%;
   }
 }
+
+/* ---- Status-bar action cluster ---------------------------------------- */
+.status-actions {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+/* The SBB "circle-question-mark-small" glyph is drawn with an 18px ring,
+   ~10% smaller than the 20px ring of "circle-information-small" used by the
+   adjacent info button. The icon lives in the mini-button's shadow DOM, so we
+   scale the whole button up to match; transform doesn't reflow, so the row
+   spacing is unchanged and only the (otherwise invisible) hit area grows. */
+.status-replay {
+  display: inline-flex;
+}
+.status-replay sbb-mini-button {
+  transform: scale(1.111);
+}
+
+/* ---- Guided tour (driver.js), themed after the SBB Lyne look ----------- */
+.driver-popover.sr-tour {
+  background: var(--white);
+  color: var(--charcoal);
+  border-radius: var(--radius-card);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.18);
+  padding: 18px 18px 14px;
+  max-width: 320px;
+  font-family: inherit;
+}
+.driver-popover.sr-tour .driver-popover-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--charcoal);
+  margin-bottom: 6px;
+}
+.driver-popover.sr-tour .driver-popover-description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--granite);
+}
+.driver-popover.sr-tour .driver-popover-progress-text {
+  font-size: 0.75rem;
+  color: var(--metal);
+}
+.driver-popover.sr-tour .driver-popover-footer {
+  margin-top: 14px;
+  gap: 8px;
+}
+.driver-popover.sr-tour .driver-popover-footer button {
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-shadow: none;
+  cursor: pointer;
+  padding: 7px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--sbb-border-radius-infinity);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.driver-popover.sr-tour .driver-popover-prev-btn {
+  background: transparent;
+  color: var(--granite);
+  border-color: var(--silver);
+}
+.driver-popover.sr-tour .driver-popover-prev-btn:hover {
+  background: var(--milk);
+  color: var(--charcoal);
+}
+.driver-popover.sr-tour .driver-popover-next-btn {
+  background: var(--sbb-red);
+  color: var(--white);
+}
+.driver-popover.sr-tour .driver-popover-next-btn:hover {
+  background: var(--sbb-red125);
+}
+.driver-popover.sr-tour .driver-popover-close-btn {
+  color: var(--granite);
+}
+.driver-popover.sr-tour .driver-popover-close-btn:hover {
+  color: var(--charcoal);
+}

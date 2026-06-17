@@ -23,7 +23,7 @@ export function DisplayPanel({ metric, resolution, onChange }: DisplayPanelProps
 
   return (
     <>
-      <div className="field">
+      <div className="field" data-tour="metric">
         <span className="field-label">{t.colorBy}</span>
         <fieldset
           className="seg-group"
@@ -54,7 +54,7 @@ export function DisplayPanel({ metric, resolution, onChange }: DisplayPanelProps
         </fieldset>
       </div>
 
-      <div className="field">
+      <div className="field" data-tour="resolution">
         <span className="field-label">
           {t.resolution} <b>{resolution}</b>
         </span>

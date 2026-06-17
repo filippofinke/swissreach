@@ -16,7 +16,7 @@ export type TimeFieldProps = {
 export function TimeField({ value, onChange }: TimeFieldProps) {
   const { t } = useTranslation();
   return (
-    <div className="field">
+    <div className="field" data-tour="time">
       <span className="field-label">{t.departure}</span>
       <SbbFormField size="m">
         <SbbTimeInput

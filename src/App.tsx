@@ -20,6 +20,7 @@ import { useJourney } from './hooks/useJourney';
 import { useRouterClient } from './hooks/useRouterClient';
 import { useTranslation } from './i18n/I18nProvider';
 import { ALL_MODES } from './state/types';
+import { useTour } from './tour/useTour';
 
 const BASE = import.meta.env.BASE_URL;
 const BERN = { lat: 46.9489, lon: 7.4392, zoom: 9 };
@@ -35,6 +36,11 @@ export function App() {
   const [collapsed, setCollapsed] = useState(collapsedRef.current);
   const [aboutOpen, setAboutOpen] = useState(false);
   const { t } = useTranslation();
+
+  // Guided tour. Expanding the (mobile-)collapsed sidebar first ensures the
+  // sidebar steps have visible targets.
+  const expandSidebar = useCallback(() => setCollapsed(false), []);
+  const { startTour, maybeAutoStart } = useTour(expandSidebar);
 
   // Snap state.date into the available service-day window once the meta
   // arrives, and adopt the meta-provided default origin if the URL had none.
@@ -80,6 +86,16 @@ export function App() {
   );
   const points = iso.kind === 'ok' ? iso.result.points : [];
   const origin = iso.kind === 'ok' ? iso.result.origin : null;
+
+  // Auto-open the guided tour once, after the first isochrone has rendered so
+  // the map and legend steps have real targets to highlight.
+  const tourTriggeredRef = useRef(false);
+  useEffect(() => {
+    if (tourTriggeredRef.current) return;
+    if (router.kind !== 'ready' || iso.kind !== 'ok') return;
+    tourTriggeredRef.current = true;
+    maybeAutoStart();
+  }, [router.kind, iso.kind, maybeAutoStart]);
 
   // Journey panel.
   const journey = useJourney(router.kind === 'ready' ? router.client : null);
@@ -225,6 +241,7 @@ export function App() {
               busy={status.busy}
               onShare={share}
               onAbout={() => setAboutOpen(true)}
+              onReplayTour={startTour}
             />
           }
         />

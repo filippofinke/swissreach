@@ -32,7 +32,7 @@ export function DateField({ value, availableDates, onChange }: DateFieldProps) {
   const max = useMemo(() => parseIso(availableDates[availableDates.length - 1]), [availableDates]);
 
   return (
-    <div className="field">
+    <div className="field" data-tour="date">
       <span className="field-label">{t.date}</span>
       <SbbFormField size="m">
         <SbbDateInput

@@ -109,4 +109,62 @@ export const en: Dictionary = {
   min: 'min',
 
   language: 'Language',
+
+  tour: {
+    next: 'Next',
+    back: 'Back',
+    done: 'Done',
+    progress: '{{current}} of {{total}}',
+    replay: 'Replay the tour',
+    steps: {
+      welcome: {
+        title: 'Welcome to SwissReach',
+        body: 'See how far you can travel by public transport from any Swiss station. Everything runs in your browser. There is no backend. This quick tour points out every control. Use Next and Back, or close it anytime.',
+      },
+      origin: {
+        title: 'Choose your starting point',
+        body: 'Search for any station here. The map redraws to show everywhere you can reach from it.',
+      },
+      date: {
+        title: 'Pick the day',
+        body: 'Choose the service day to plan for. Only days with available timetable data can be selected.',
+      },
+      time: {
+        title: 'Set the departure time',
+        body: 'Travel times are calculated for journeys leaving around this time.',
+      },
+      duration: {
+        title: 'Travel time budget',
+        body: 'Show only places reachable within this many minutes. Tap a preset or type your own value.',
+      },
+      transfers: {
+        title: 'Limit the changes',
+        body: 'Allow only direct trips, or up to 1, 2 or 3 changes, or any number with “Any”.',
+      },
+      metric: {
+        title: 'Colour the map',
+        body: 'Shade the map by travel time, or by the number of changes needed to get there.',
+      },
+      resolution: {
+        title: 'Map detail',
+        body: 'Adjust how fine the hexagon grid is. Higher means more detail; lower is faster and smoother.',
+      },
+      modes: {
+        title: 'Transport modes',
+        body: 'Include or exclude trains, buses, trams, boats and more to see how the reachable area changes.',
+      },
+      map: {
+        title: 'Your reachable area',
+        body: 'Coloured hexagons show where you can get to, and the legend explains the colours. Click any station on the map for a step by step connection, and to set it as the new starting point.',
+      },
+      actions: {
+        title: 'Share, info & language',
+        body: 'Copy a link to your current view, open the about box, or switch the language here.',
+      },
+      replayStep: {
+        title: 'Need the tour again?',
+        body: 'Reopen this guided tour anytime from this button. Enjoy exploring Switzerland!',
+      },
+    },
+  },
 };

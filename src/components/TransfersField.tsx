@@ -34,7 +34,7 @@ export function TransfersField({ value, onChange }: TransfersFieldProps) {
     OPTIONS.findIndex((o) => isActive(o.value, value)),
   );
   return (
-    <div className="field">
+    <div className="field" data-tour="transfers">
       <span className="field-label">{t.maxTransfers}</span>
       <fieldset
         className="seg-group"
