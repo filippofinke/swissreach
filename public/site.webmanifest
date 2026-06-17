@@ -1,0 +1,18 @@
+{
+  "name": "SwissReach",
+  "short_name": "SwissReach",
+  "description": "Open-source isochrone maps of Swiss public transport. See how far you can travel by train, bus and boat in a given time.",
+  "lang": "en",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#eb0000",
+  "categories": ["travel", "navigation", "maps", "utilities"],
+  "icons": [
+    { "src": "favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any maskable" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any maskable" }
+  ]
+}
