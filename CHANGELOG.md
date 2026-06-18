@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.3.0](https://github.com/filippofinke/swissreach/compare/v1.2.0...v1.3.0) (2026-06-18)
+
+### Features
+
+* move to swissreach.filippofinke.ch ([e6dca03](https://github.com/filippofinke/swissreach/commit/e6dca032f4a70823f74e964e0b8439474f994615))
+
 ## [1.2.0](https://github.com/filippofinke/swissreach/compare/v1.1.0...v1.2.0) (2026-06-18)
 
 ### Features

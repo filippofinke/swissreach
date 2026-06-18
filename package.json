@@ -1,6 +1,6 @@
 {
   "name": "swissreach",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "description": "Open-source client-side public-transport isochrone maps for Switzerland, powered by RAPTOR (minotor), MapLibre and H3.",
   "type": "module",
