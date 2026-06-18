@@ -93,10 +93,10 @@ jobs:
       # Ship the pre-generated timetables committed under public/data/. The
       # data:real / data:sample pipelines are kept for local development only;
       # the deploy bundle uses whatever is on the released tag.
+      # The app is served from the swissreach.filippofinke.ch apex/custom domain
+      # at the site root, so no BASE_PATH sub-path is needed; Vite defaults to "/".
       - name: Build
         run: npm run build
-        env:
-          BASE_PATH: /${{ github.event.repository.name }}/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
