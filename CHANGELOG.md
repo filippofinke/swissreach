@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.2.0](https://github.com/filippofinke/swissreach/compare/v1.1.0...v1.2.0) (2026-06-18)
+
+### Features
+
+* implement mobile-responsive drawer backdrop, safe-area insets, and compact legend layout ([7b74cb1](https://github.com/filippofinke/swissreach/commit/7b74cb10d75e4e719ca5a1be548daebf9898b9db))
+
 ## [1.1.0](https://github.com/filippofinke/swissreach/compare/v1.0.6...v1.1.0) (2026-06-17)
 
 ### Features
