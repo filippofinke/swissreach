@@ -560,6 +560,21 @@ sbb-checkbox-group.modes-group {
   color: var(--granite);
   margin-top: 8px;
 }
+/* ---- Backdrop behind the mobile drawer (no-op on desktop) -------------- */
+.sidebar-scrim {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 14;
+  border: none;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.32);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0;
+  transition: opacity 0.26s ease;
+}
+
 /* ---- Responsive: sidebar overlays the map on small screens ------------ */
 @media (max-width: 760px) {
   #panel {
@@ -575,11 +590,88 @@ sbb-checkbox-group.modes-group {
     transition: transform 0.26s ease;
   }
   #app.sidebar-collapsed #panel {
+    /* On desktop the panel collapses via a negative margin; on mobile it
+       slides out with a transform. Reset the margin here so the two don't
+       stack into a double offset that drags the toggle button off-screen. */
+    margin-left: 0;
     transform: translateX(-100%);
   }
+
+  /* Show the backdrop only while the drawer is open. */
+  #app:not(.sidebar-collapsed) .sidebar-scrim {
+    display: block;
+    opacity: 1;
+  }
+
+  /* Keep the floating toggle clear of notches / status bars. */
+  .sidebar-toggle-btn {
+    top: calc(12px + env(safe-area-inset-top));
+  }
+  #app.sidebar-collapsed .sidebar-toggle-btn {
+    left: calc(100% + 12px + env(safe-area-inset-left));
+  }
+
+  /* Pad the panel's scroll and bottom strip past the safe-area insets. */
+  .panel-scroll {
+    padding-top: calc(12px + env(safe-area-inset-top));
+    padding-left: calc(12px + env(safe-area-inset-left));
+  }
+  .panel-bottom {
+    padding-bottom: calc(7px + env(safe-area-inset-bottom));
+    padding-left: calc(14px + env(safe-area-inset-left));
+  }
+
+  /* Journey details become a bottom sheet instead of a floating popup. */
   .journey-panel {
-    width: calc(100% - 24px);
-    max-height: 50%;
+    top: auto;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 62%;
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+    box-shadow: 0 -10px 32px rgba(0, 0, 0, 0.24);
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+
+  /* Lift the legend clear of the home indicator / safe area on phones. */
+  .legend-overlay {
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ---- Compact, single-row legend (phones + tablets) -------------------- */
+/* Below the desktop layout the map is narrow, so keep the colour scale on a
+   single horizontal line — smaller ticks, and the repeated "min" dropped from
+   every tick except the last (scroll rather than wrap if it still overflows). */
+@media (max-width: 1024px) {
+  .legend-overlay {
+    padding: 5px 8px;
+  }
+  .legend-scale {
+    flex-wrap: nowrap;
+    gap: 0 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .legend-scale::-webkit-scrollbar {
+    display: none;
+  }
+  .legend-item {
+    flex: 0 0 auto;
+    gap: 4px;
+    font-size: 0.625rem;
+  }
+  .legend-item .swatch {
+    width: 10px;
+    height: 8px;
+  }
+  .legend-item .legend-unit {
+    display: none;
+  }
+  .legend-item:last-child .legend-unit {
+    display: inline;
   }
 }
 

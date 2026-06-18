@@ -18,12 +18,22 @@ export function Legend({ metric, maxDuration, maxTransfers }: LegendProps) {
   return (
     <div className="legend-overlay">
       <div className="legend-scale">
-        {entries.map((e) => (
-          <div key={`${e.label}-${e.value}`} className="legend-item">
-            <span className="swatch" style={{ background: e.color }} />
-            {e.label.replace('min', t.min)}
-          </div>
-        ))}
+        {entries.map((e) =>
+          metric === 'time' ? (
+            // Split the unit into its own span so the compact mobile legend can
+            // hide the repeated "min" and keep it only on the last tick.
+            <div key={`${e.label}-${e.value}`} className="legend-item">
+              <span className="swatch" style={{ background: e.color }} />
+              {e.value}
+              <span className="legend-unit">&nbsp;{t.min}</span>
+            </div>
+          ) : (
+            <div key={`${e.label}-${e.value}`} className="legend-item">
+              <span className="swatch" style={{ background: e.color }} />
+              {e.label.replace('min', t.min)}
+            </div>
+          ),
+        )}
       </div>
     </div>
   );

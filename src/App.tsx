@@ -247,6 +247,16 @@ export function App() {
         />
       )}
 
+      {/* Tap-to-dismiss backdrop for the mobile drawer; hidden on desktop and
+          when the sidebar is collapsed (see the responsive block in styles). */}
+      <button
+        type="button"
+        className="sidebar-scrim"
+        aria-label="Close settings"
+        tabIndex={collapsed ? -1 : 0}
+        onClick={() => setCollapsed(true)}
+      />
+
       <main id="map">
         <MapView
           ref={mapRef}

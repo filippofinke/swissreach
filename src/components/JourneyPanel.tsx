@@ -175,8 +175,13 @@ export function JourneyPanel({
   const { t } = useTranslation();
   if (status.kind === 'closed') return null;
   const target = status.target;
-  const style = anchorStyle(anchorPx, containerSize);
-  const cls = `journey-panel${anchorPx ? ' journey-panel--anchored' : ''}`;
+  // On phones the anchored popup can land on top of the tapped station and
+  // jump around as the map pans; render a fixed bottom sheet instead (styled
+  // in the responsive block of styles.css), so drop the inline positioning.
+  const isMobile =
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 760px)').matches;
+  const style = isMobile ? undefined : anchorStyle(anchorPx, containerSize);
+  const cls = `journey-panel${!isMobile && anchorPx ? ' journey-panel--anchored' : ''}`;
 
   if (status.kind === 'loading') {
     return (
