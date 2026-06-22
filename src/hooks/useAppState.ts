@@ -9,12 +9,22 @@ import { useCallback, useEffect, useReducer } from 'react';
 import { readState, writeState } from '../state/state';
 import type { AppState } from '../state/types';
 
-type Action = { type: 'patch'; partial: Partial<AppState> } | { type: 'replace'; state: AppState };
+/**
+ * A patch is either a plain partial or a function of the *latest* state. The
+ * functional form lets callers derive the next value from the current one
+ * inside the reducer, so rapid successive updates can't clobber each other
+ * with a stale render-time snapshot.
+ */
+export type StatePatch = Partial<AppState> | ((prev: AppState) => Partial<AppState>);
+
+type Action = { type: 'patch'; partial: StatePatch } | { type: 'replace'; state: AppState };
 
 function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
-    case 'patch':
-      return { ...state, ...action.partial };
+    case 'patch': {
+      const partial = typeof action.partial === 'function' ? action.partial(state) : action.partial;
+      return { ...state, ...partial };
+    }
     case 'replace':
       return action.state;
   }
@@ -22,7 +32,7 @@ function reducer(state: AppState, action: Action): AppState {
 
 export type AppStateApi = {
   state: AppState;
-  patch: (partial: Partial<AppState>) => void;
+  patch: (partial: StatePatch) => void;
   replace: (state: AppState) => void;
 };
 
@@ -41,7 +51,7 @@ export function useAppState(defaultOrigin: string): AppStateApi {
     return () => window.removeEventListener('popstate', onPop);
   }, [defaultOrigin]);
 
-  const patch = useCallback((partial: Partial<AppState>) => {
+  const patch = useCallback((partial: StatePatch) => {
     dispatch({ type: 'patch', partial });
   }, []);
 

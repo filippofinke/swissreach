@@ -10,7 +10,12 @@ import { useTranslation } from '../i18n/I18nProvider';
 export type ModesPanelProps = {
   available: RouteType[];
   selected: RouteType[];
-  onChange: (modes: RouteType[]) => void;
+  /**
+   * Receives an updater that derives the next selection from the *latest*
+   * modes rather than the render-time snapshot, so quick successive toggles
+   * each build on the previous one instead of reverting it.
+   */
+  onChange: (update: (current: RouteType[]) => RouteType[]) => void;
 };
 
 export function ModesPanel({ available, selected, onChange }: ModesPanelProps) {
@@ -18,8 +23,11 @@ export function ModesPanel({ available, selected, onChange }: ModesPanelProps) {
   const selectedSet = new Set(selected);
 
   function toggle(mode: RouteType, checked: boolean) {
-    const next = available.filter((m) => (m === mode ? checked : selectedSet.has(m)));
-    onChange(next.length ? next : [mode]);
+    onChange((current) => {
+      const set = new Set(current);
+      const next = available.filter((m) => (m === mode ? checked : set.has(m)));
+      return next.length ? next : [mode];
+    });
   }
 
   return (
