@@ -6,6 +6,7 @@
  */
 import { SbbIcon } from '@sbb-esta/lyne-react/icon';
 import type { ReactNode } from 'react';
+import type { StatePatch } from '../hooks/useAppState';
 import type { RouterClient } from '../router-client';
 import type { AppState, RouteType } from '../state/types';
 import { DateField } from './DateField';
@@ -20,7 +21,7 @@ export type SidebarProps = {
   collapsed: boolean;
   onToggleCollapsed: () => void;
   state: AppState;
-  patch: (partial: Partial<AppState>) => void;
+  patch: (partial: StatePatch) => void;
   client: RouterClient;
   originName: string;
   availableDates: string[];
@@ -82,7 +83,7 @@ export function Sidebar({
         <ModesPanel
           available={availableModes}
           selected={state.modes}
-          onChange={(modes) => patch({ modes })}
+          onChange={(update) => patch((prev) => ({ modes: update(prev.modes) }))}
         />
       </div>
 
