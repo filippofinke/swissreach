@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.3.1](https://github.com/filippofinke/swissreach/compare/v1.3.0...v1.3.1) (2026-06-22)
+
+### Bug Fixes
+
+* **modes:** derive mode toggle from latest state to prevent lost updates ([9ca01ec](https://github.com/filippofinke/swissreach/commit/9ca01ec6d0325025c64eeba2ec9b753d5bc975c9))
+
 ## [1.3.0](https://github.com/filippofinke/swissreach/compare/v1.2.0...v1.3.0) (2026-06-18)
 
 ### Features
