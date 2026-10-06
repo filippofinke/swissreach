@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.5.0](https://github.com/filippofinke/swissreach/compare/v1.4.0...v1.5.0) (2026-10-06)
+
+### Features
+
+* **map:** switch basemap to swisstopo vector tiles ([#6](https://github.com/filippofinke/swissreach/issues/6)) ([4df37ad](https://github.com/filippofinke/swissreach/commit/4df37ad9573ae6941549dd914a86e95917893e2e))
+
 ## [1.4.0](https://github.com/filippofinke/swissreach/compare/v1.3.0...v1.4.0) (2026-10-06)
 
 ### Features
