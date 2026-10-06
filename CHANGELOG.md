@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented here. The format follows [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/).
 
+## [1.4.0](https://github.com/filippofinke/swissreach/compare/v1.3.0...v1.4.0) (2026-10-06)
+
+### Features
+
+* **map:** replace CARTO tiles with self-hosted Swiss vector basemap ([#5](https://github.com/filippofinke/swissreach/issues/5)) ([999f115](https://github.com/filippofinke/swissreach/commit/999f11544f4c4ab2da6f1b8f4890b4e1f647ac54))
+
+### Bug Fixes
+
+* **modes:** derive mode toggle from latest state to prevent lost updates ([a8906f4](https://github.com/filippofinke/swissreach/commit/a8906f4fa911f4b9689dc0b746710af191fbcc0d))
+
 ## [1.3.1](https://github.com/filippofinke/swissreach/compare/v1.3.0...v1.3.1) (2026-06-22)
 
 ### Bug Fixes
