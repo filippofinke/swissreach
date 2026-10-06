@@ -757,3 +757,32 @@ sbb-checkbox-group.modes-group {
 .driver-popover.sr-tour .driver-popover-close-btn:hover {
   color: var(--charcoal);
 }
+
+/* ---- Basemap city labels ---------------------------------------------- */
+.city-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--granite);
+  white-space: nowrap;
+  text-shadow:
+    0 0 2px var(--white),
+    0 0 2px var(--white),
+    0 0 4px var(--white);
+}
+
+.city-label::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--metal);
+}
+
+.city-label--major {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--iron);
+}

@@ -21,6 +21,7 @@
     "data:sample": "tsx scripts/make-sample-gtfs.ts",
     "data:build": "tsx scripts/build-data.ts",
     "data:build:parallel": "tsx scripts/build-data-parallel.ts",
+    "data:basemap": "tsx scripts/build-basemap.ts",
     "data:fetch": "tsx scripts/fetch-swiss-gtfs.ts",
     "data:real": "tsx scripts/build-real.ts",
     "data:real:parallel": "tsx scripts/build-real-parallel.ts",
