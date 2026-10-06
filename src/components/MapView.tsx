@@ -10,7 +10,6 @@ import {
   NavigationControl,
 } from 'react-map-gl/maplibre';
 import { LIGHT_STYLE, SWISS_BOUNDS } from '../map/backgrounds';
-import { CityLabels } from './CityLabels';
 
 export type MapViewHandle = {
   flyTo: (lon: number, lat: number) => void;
@@ -59,7 +58,7 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
         zoom: initialCenter.zoom,
       }}
       maxBounds={SWISS_BOUNDS}
-      attributionControl={false}
+      attributionControl={{ compact: true }}
       interactiveLayerIds={['stations-circles']}
       onClick={(e) => {
         // Skip when a station feature was hit — its own handler runs.
@@ -70,7 +69,6 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       onResize={() => onViewportChange?.()}
     >
       <NavigationControl position="top-right" />
-      <CityLabels />
       {children}
     </MapLibreMap>
   );
