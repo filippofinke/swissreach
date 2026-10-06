@@ -158,12 +158,14 @@ src/
   map/
     hexagons.ts             # H3 binning -> GeoJSON
     colors.ts               # colour scales + legend
-    backgrounds.ts          # MapLibre basemap style
+    backgrounds.ts          # MapLibre basemap style (Swiss vector basemap)
+    cities.ts               # generated city labels
   state/
     state.ts                # URL <-> AppState
     types.ts                # AppState, IsochronePoint, Meta, RouteType, ...
   i18n/                     # I18nProvider + DE / EN / FR / IT / RM dictionaries
   styles.css                # global styles
+public/basemap/             # generated Swiss vector basemap (GeoJSON)
 public/data/                # generated timetable_<hash>.bin / stops.bin / meta.json
 ```
 
@@ -179,7 +181,7 @@ Enable Pages → "GitHub Actions" in the repository settings.
 
 - [minotor](https://github.com/aubryio/minotor) by **Aubry Cholleton** — the client-side RAPTOR routing engine this app is built on.
 - Timetable data: the Swiss GTFS feed on [opentransportdata.swiss](https://opentransportdata.swiss).
-- Basemap: © OpenStreetMap contributors, © CARTO (Carto Light tiles).
+- Basemap: [Natural Earth](https://www.naturalearthdata.com) (public domain), rebuilt with `npm run data:basemap`.
 
 ## License
 
